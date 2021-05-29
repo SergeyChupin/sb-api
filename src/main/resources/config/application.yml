@@ -1,0 +1,38 @@
+spring:
+  jackson:
+    deserialization:
+      fail-on-unknown-properties: false
+      read_unknown_enum_values_using_default_value: true
+    serialization:
+      fail-on-empty-beans: false
+      write_dates_as_timestamps: false
+      indent_output: true
+    default-property-inclusion: non_null
+
+users:
+  testuser:
+    password: "{sha256}f17011a865f00ebf2a305a85a8659eef3d62b614f65c09a0a51942973b8cf6b38a7cc006113090fc"
+    role: USER
+
+ws:
+  endpoint: http://localhost:9999/ws
+rs:
+  endpoint: http://localhost:9999
+
+users-api:
+  uri: ${ws.endpoint}
+phones-api:
+  uri: ${rs.endpoint}
+
+cxf-client:
+  connection-timeout-ms: 5000
+  receive-timeout-ms: 5000
+
+web-client:
+  connection-timeout-ms: 5000
+  read-timeout-ms: 5000
+  write-timeout-ms: 5000
+
+logging:
+  level:
+    org.zalando.logbook: TRACE
